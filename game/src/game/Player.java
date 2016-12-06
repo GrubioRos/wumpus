@@ -77,6 +77,10 @@ public class Player {
 
 	private void go() {
 		// TODO Auto-generated method stub
+		if(outOfMap()){
+			System.out.print("You crashed into a wall.\n>");
+			return;
+		}
 		// if looking at bottom
 		if (this.lookingAt[0] == this.x && this.lookingAt[1] < this.y) {
 			setX(this.lookingAt[0]);
@@ -103,6 +107,13 @@ public class Player {
 		}
 		printCell();
 		printLooking();
+	}
+
+	private boolean outOfMap() {
+		if(this.lookingAt[0] > 0 && this.lookingAt[0] < Main.WIDTH && this.lookingAt[1] > 0 && this.lookingAt[1] < Main.HEIGHT){
+			return false;
+		}
+		return true;
 	}
 
 	public void printCell() {
