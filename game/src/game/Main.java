@@ -18,16 +18,27 @@ public class Main {
 		m.player = new Player(1,1);
 		m.enemys = new Enemy[4];
 		m.enemys[0] = new Wumpus(3,3); 
+		m.enemys[1] = new Pit(4,2);
+		m.enemys[2] = new Pit(4,4);
+		m.enemys[3] = new Pit(1,3);
 		Scanner keyboard = new Scanner(System.in);		
 	 	String input;
 	    System.out.print(HELLO_MSG);
 	    System.out.print( "> ");
 	    while(!m.end){
+	    	checkSmells(m.enemys, m.player);
 		    input = keyboard.next();
 		    if(checkInput(input)) m.player.run(input);
 		    else System.out.print( "I did not understand.\n> ");
 	    }
 	        
+	 }
+	 
+	 public static void checkSmells(Enemy[] enemys, Player player){
+		 for (Enemy e : enemys) {
+			    if(e.isClose(player.getX(), player.getY()))
+			    	e.printWarning();
+			}
 	 }
 	 
 
