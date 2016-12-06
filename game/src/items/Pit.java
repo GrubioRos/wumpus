@@ -1,6 +1,6 @@
-package enemys;
+package items;
 
-public class Pit extends Enemy{
+public class Pit extends Item{
 
 	public Pit(int x, int y) {
 		super(x, y);

@@ -1,6 +1,6 @@
-package enemys;
+package items;
 
-public class Wumpus extends Enemy{
+public class Wumpus extends Item{
 	
 
 	public Wumpus(int x, int y) {
