@@ -110,7 +110,7 @@ public class Player {
 	}
 
 	private boolean outOfMap() {
-		if(this.lookingAt[0] > 0 && this.lookingAt[0] < Main.WIDTH && this.lookingAt[1] > 0 && this.lookingAt[1] < Main.HEIGHT){
+		if(this.lookingAt[0] > 0 && this.lookingAt[0] <= Main.WIDTH && this.lookingAt[1] > 0 && this.lookingAt[1] <= Main.HEIGHT){
 			return false;
 		}
 		return true;
