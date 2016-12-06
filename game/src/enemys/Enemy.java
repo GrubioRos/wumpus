@@ -6,6 +6,7 @@ public abstract class Enemy {
     
 
     public Enemy(int x, int y){
+    	
         this.x = x;
         this.y = y;
     }
