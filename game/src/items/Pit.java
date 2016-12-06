@@ -4,6 +4,7 @@ public class Pit extends Item{
 
 	public Pit(int x, int y) {
 		super(x, y);
+		this.killer = true;
 		// TODO Auto-generated constructor stub
 	}
 

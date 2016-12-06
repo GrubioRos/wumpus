@@ -6,6 +6,7 @@ public class Player {
 	private int x;
 	private int y;
 	private int[] lookingAt;
+	public boolean alive = true;
 
 	public Player(int x, int y) {
 		this.x = x;
@@ -63,7 +64,7 @@ public class Player {
 				}
 			}
 		}
-		printLooking();
+		//printLooking();
 	}
 
 	public void run(String input, Main m) {
@@ -145,8 +146,8 @@ public class Player {
 			setY(this.lookingAt[1]);
 			this.lookingAt[1]++;
 		}
-		printCell();
-		printLooking();
+		//printCell();
+		//printLooking();
 	}
 
 	private boolean outOfMap() {

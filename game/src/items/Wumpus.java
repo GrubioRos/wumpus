@@ -5,6 +5,7 @@ public class Wumpus extends Item{
 
 	public Wumpus(int x, int y) {
 		super(x, y);
+		this.killer = true;
 		// TODO Auto-generated constructor stub
 	}
 

@@ -3,6 +3,7 @@ package items;
 public class Gold extends Item{
 	public Gold(int x, int y) {
 		super(x, y);
+		this.killer = false;
 		// TODO Auto-generated constructor stub
 	}
 

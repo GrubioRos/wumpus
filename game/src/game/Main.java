@@ -20,29 +20,29 @@ public class Main {
 		m.items = new Item[4];
 		m.items[0] = new Wumpus(3, 3);
 		m.items[1] = new Pit(4, 2);
-		m.items[2] = new Pit(4, 4);
+		m.items[2] = new Pit(2, 2);
 		m.items[3] = new Gold(2, 4);
 		Scanner keyboard = new Scanner(System.in);
 		String input;
 		System.out.print(HELLO_MSG);
 		System.out.print("> ");
-		while (!m.end) {
+		while (!m.end && m.player.alive) {
 
 			input = keyboard.next();
 			if (checkInput(input)) {
-				checkSmells(m.items, m.player);
+				
 				m.player.run(input, m);
-				if (checkGold(m.items[m.items.length - 1], m.player))
-					m.hasGold = true;
-				if (checkFinish(m))
-					m.end = true;
+				checkSmells(m.items, m.player);
+				if (checkGold(m.items[m.items.length - 1], m.player)) m.hasGold = true;
+				if (checkFinish(m)) m.end = true;
+				
 			} else
 				System.out.print("I did not understand.\n> ");
 
 		}
 		keyboard.close();
-		System.out.print("WINNER");
-		return;
+		if (m.player.alive)
+			System.out.print("WINNER");
 
 	}
 
@@ -64,8 +64,12 @@ public class Main {
 	public static void checkSmells(Item[] enemys, Player player) {
 		for (Item e : enemys) {
 			if (e != null) {
-				if (e.isClose(player.getX(), player.getY()))
+				if (e.isClose(player.getX(), player.getY())) {
 					e.printWarning();
+				}
+				if (e.getX() == player.getX() && e.getY() == player.getY() && e.killer) {
+					 System.out.print("You just died.\n> ");
+				}
 			}
 		}
 	}
