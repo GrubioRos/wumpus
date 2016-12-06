@@ -31,7 +31,7 @@ public class Main {
 			input = keyboard.next();
 			if (checkInput(input)) {
 				checkSmells(m.items, m.player);
-				m.player.run(input);
+				m.player.run(input, m);
 				if (checkGold(m.items[m.items.length - 1], m.player))
 					m.hasGold = true;
 				if (checkFinish(m))
@@ -63,8 +63,10 @@ public class Main {
 
 	public static void checkSmells(Item[] enemys, Player player) {
 		for (Item e : enemys) {
-			if (e.isClose(player.getX(), player.getY()))
-				e.printWarning();
+			if (e != null) {
+				if (e.isClose(player.getX(), player.getY()))
+					e.printWarning();
+			}
 		}
 	}
 

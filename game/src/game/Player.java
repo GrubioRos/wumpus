@@ -1,5 +1,7 @@
 package game;
 
+import items.Item;
+
 public class Player {
 	private int x;
 	private int y;
@@ -64,7 +66,7 @@ public class Player {
 		printLooking();
 	}
 
-	public void run(String input) {
+	public void run(String input, Main m) {
 		// TODO Auto-generated method stub
 		if (input.equalsIgnoreCase("go"))
 			go();
@@ -72,7 +74,45 @@ public class Player {
 			setLookingAt("right");
 		if (input.equalsIgnoreCase("left"))
 			setLookingAt("left");
+		if (input.equalsIgnoreCase("shoot"))
+			shoot(m);
 
+	}
+
+	private void shoot(Main m) {
+		// TODO Auto-generated method stub
+		if(wumpusHit(m.items[0])){
+			System.out.print("You hear a scream.\n>");
+			m.items[0] = null;
+		}
+		
+		
+	}
+	
+	
+
+	private boolean wumpusHit(Item wumpus) {
+		// if looking at bottom
+		if (this.lookingAt[0] == this.x && this.lookingAt[1] < this.y) {
+			if (wumpus.getX() == this.x && wumpus.getY() < this.y)
+				return true;
+		}
+		// if looking at left
+		if (this.lookingAt[0] < this.x && this.lookingAt[1] == this.y) {
+			if (wumpus.getX() < this.x && wumpus.getY() == this.y)
+				return true;
+		}
+		// if looking at right
+		if (this.lookingAt[0] > this.x && this.lookingAt[1] == this.y) {
+			if (wumpus.getX() > this.x && wumpus.getY() == this.y)
+				return true;
+		}
+		// if looking at top
+		if (this.lookingAt[0] == this.x && this.lookingAt[1] > this.y) {
+			if (wumpus.getX() == this.x && wumpus.getY() > this.y)
+				return true;
+		}
+		return false;
 	}
 
 	private void go() {
